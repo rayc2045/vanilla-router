@@ -1,14 +1,7 @@
-import loremComponent from "./components/Lorem.js";
+import router from "./router.js";
+import LoremComponent from "./components/LoremComponent.js";
 
-document.oncontextmenu =
-  document.ondragstart =
-  document.onmousemove =
-  document.onselect =
-  document.onselectstart =
-  document.oncopy =
-  document.onbeforecopy =
-  // document.onkeydown =
-  window.onresize =
-    (_) => false;
-
-console.log("<loremComponent />");
+window.onhashchange = () => {
+  const page = location.hash.split("#")[1];
+  router.renderView(page);
+};
