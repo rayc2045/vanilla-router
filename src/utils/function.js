@@ -1,3 +1,11 @@
+export function select(selector, parent = document) {
+  return parent.querySelector(selector);
+}
+
+export function selectAll(selector, parent = document) {
+  return [...parent.querySelectorAll(selector)];
+}
+
 export function createComponent(name, type = "div", props = {}) {
   let el;
   customElements.define(
