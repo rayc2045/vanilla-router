@@ -61,10 +61,34 @@
     <script src="./src/main.js" type="module"></script>
   </head>
 
-  <body class="min-h:100svh display:flex flex-direction:column cursor:default">
+  <body class="min-h:100svh display:flex flex-direction:column">
+    <nav class="container-fluid">
+      <ul>
+        <li><a href="/#/" class="font:bold font:1.5em">Vanilla SPA</a></li>
+      </ul>
+      <ul>
+        <li><a href="/#/about">About</a></li>
+        <li><a href="/#/servuce">Services</a></li>
+        <li><a href="/#/products">Products</a></li>
+      </ul>
+    </nav>
+
     <div class="flex-grow:1 py:2em container">
-      <h1>Web Component</h1>
-      <lorem-component />
+      <div id="router-view"></div>
+      <p>
+        The paragraph below is made by
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components"
+          target="_blank"
+          >Web Components</a
+        >
+      </p>
+      <lorem-component></lorem-component>
     </div>
+
+    <footer class="text:center font:monospace">
+      Developed by
+      <a href="https://github.com/rayc2045" target="_blank">Ray C</a>
+    </footer>
   </body>
 </html>
