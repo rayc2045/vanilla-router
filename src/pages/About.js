@@ -1,3 +1,16 @@
-export default `
-  <h1>This is about page<h1>
-`;
+class About extends HTMLElement {
+  constructor() {
+    super();
+    this.shadow = this.attachShadow({ mode: "closed" });
+  }
+  connectedCallback() {
+    this.shadow.innerHTML = `
+      <h1>This is about page</h1>
+      <lorem-component></lorem-component>
+    `;
+    import("../components/LoremComponent.js");
+  }
+}
+
+customElements.define("about-page", About);
+export default About;
