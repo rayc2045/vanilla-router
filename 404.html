@@ -22,14 +22,27 @@
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.blue.min.css"
     />
     <link rel="stylesheet" href="./src/assets/style.css" />
-    <!-- MasterCSS -->
-    <script src="https://cdn.master.co/css" defer></script>
+    <style>
+      body {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        padding-block: 2em;
+        flex-grow: 1;
+      }
+    </style>
+    <script defer>
+      import("/src/pages/NotFound.js");
+      import("/src/components/Footer.js");
+    </script>
   </head>
 
-  <body class="min-h:100svh display:flex flex-direction:column">
-    <div class="flex-grow:1 py:2em container">
-      <h1>404 Not Found</h1>
-      <a href="/">Back to Home</a>
-    </div>
+  <body>
+    <main class="container">
+      <not-found></not-found>
+    </main>
+    <footer-component class="container-fluid"></footer-component>
   </body>
 </html>
