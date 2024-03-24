@@ -1,4 +1,4 @@
-import("../components/LoremComponent.js");
+import("../components/Lorem.js");
 
 class About extends HTMLElement {
   constructor() {

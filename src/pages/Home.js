@@ -1,4 +1,4 @@
-import("../components/LoremComponent.js");
+import("../components/Lorem.js");
 
 class Home extends HTMLElement {
   constructor() {
@@ -12,12 +12,6 @@ class Home extends HTMLElement {
       <lorem-component></lorem-component>
       <lorem-component></lorem-component>
     `;
-    // this.shadow.innerHTML = `
-    //   <style>
-    //     :host { color: crimson; }
-    //     p { font-weight:bold; }
-    //   </style>
-    // `;
   }
 }
 
