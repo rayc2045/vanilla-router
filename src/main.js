@@ -16,11 +16,12 @@ document.onclick = (e) => {
 
     if (!href.startsWith(selfHost)) return;
     e.preventDefault();
-    const path = href.split(selfHost)[1];
-    const goToPage = (path) => (location.hash = path);
+    const routePaths = router.routes
+        .map((route) => route.path)
+        .filter((path) => path !== "/"),
+      path = href.split(selfHost)[1],
+      goToPage = (path) => (location.hash = path);
 
-    const routePaths = router.routes.map((route) => route.path);
-    routePaths.shift(); // remove('/')
     if (path === "/") return goToPage("/");
     if (routePaths.includes(path)) {
       if (target === "_blank") return open(`${selfHost}/#${path}`, "_blank");
