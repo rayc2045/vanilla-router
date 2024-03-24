@@ -1,33 +1,20 @@
+export async function getData(api) {
+  const res = await fetch(api);
+  return await res.json();
+}
+
+export function getHost() {
+  return location.host.startsWith("http")
+    ? location.host
+    : `${location.protocol}//${location.host}`;
+}
+
 export function select(selector, parent = document) {
   return parent.querySelector(selector);
 }
 
 export function selectAll(selector, parent = document) {
   return [...parent.querySelectorAll(selector)];
-}
-
-export function createComponent(name, type = "div", props = {}) {
-  let el;
-  customElements.define(
-    name,
-    class extends HTMLElement {
-      constructor() {
-        super();
-        el = document.createElement(type);
-        if (Object.keys(props).length)
-          for (const prop of Object.keys(props))
-            el[prop] = this.getAttribute(prop) || props[prop];
-        const shadowRoot = this.attachShadow({ mode: "closed" }); // open
-        shadowRoot.appendChild(el);
-      }
-    },
-  );
-  return el;
-}
-
-export async function getData(api) {
-  const res = await fetch(api);
-  return await res.json();
 }
 
 export function toTitle(str) {
