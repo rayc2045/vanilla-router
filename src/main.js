@@ -1,9 +1,9 @@
+import { getHost } from "./utils/function.js";
 import router from "./router/index.js";
-import routes from "./router/routes.js";
 
-const isFullySPA = true;
+const FULLY_SPA = true;
 
-const pathes = routes.map((route) => route.path);
+const pathes = router.routes.map((route) => route.path);
 pathes.shift(); // remove('/')
 
 window.onhashchange = () => {
@@ -12,19 +12,24 @@ window.onhashchange = () => {
 };
 
 document.onclick = (e) => {
-  const selfHost = location.host,
-    href = e.target.href,
-    target = e.target.target,
-    isSelf = href.includes(selfHost);
-  if (isSelf) {
+  if (e.target.nodeName === "A") {
+    const selfHost = getHost(),
+      href = e.target.href,
+      target = e.target.target;
+
+    if (!href.startsWith(selfHost)) return;
     e.preventDefault();
     const path = href.split(selfHost)[1];
-    if (path === "/") return router.renderPage("/");
+    const goToPage = (path) => (location.hash = path);
+
+    if (path === "/") return goToPage("/");
     if (pathes.includes(path)) {
       if (target === "_blank") return open(`${selfHost}/#${path}`, "_blank");
-      return router.renderPage(path);
+      return goToPage(path);
     }
-    if (!isFullySPA) return (location.href = "/404.html");
-    router.renderPage("/404");
+
+    if (FULLY_SPA) return goToPage("/404");
+    if (target === "_blank") return open(href, "_blank");
+    location.href = href;
   }
 };

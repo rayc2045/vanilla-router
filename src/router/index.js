@@ -5,10 +5,11 @@ class Router {
     this.routes = routes;
   }
   renderPage(path) {
-    const route =
-      this.routes.find((route) => route.path === path) ||
-      this.routes.find((r) => r.path === "/404");
-    location.hash = route.path;
+    const route = this.routes.find((route) => route.path === path) || {
+      path: "/404",
+      component: "NotFound",
+      element: "<not-found></not-found>",
+    };
     import(`/src/pages/${route.component}.js`);
     document.querySelector("#router-view").innerHTML = route.element;
   }
