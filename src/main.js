@@ -3,9 +3,6 @@ import router from "./router/index.js";
 
 const FULLY_SPA = true;
 
-const pathes = router.routes.map((route) => route.path);
-pathes.shift(); // remove('/')
-
 window.onhashchange = () => {
   const path = location.hash.slice(1);
   router.renderPage(path);
@@ -22,8 +19,10 @@ document.onclick = (e) => {
     const path = href.split(selfHost)[1];
     const goToPage = (path) => (location.hash = path);
 
+    const routePaths = router.routes.map((route) => route.path);
+    routePaths.shift(); // remove('/')
     if (path === "/") return goToPage("/");
-    if (pathes.includes(path)) {
+    if (routePaths.includes(path)) {
       if (target === "_blank") return open(`${selfHost}/#${path}`, "_blank");
       return goToPage(path);
     }
