@@ -1,5 +1,6 @@
 import { getHost } from "./utils/function.js";
 import router from "./router/index.js";
+import("./components/Footer.js");
 
 const FULLY_SPA = true;
 
