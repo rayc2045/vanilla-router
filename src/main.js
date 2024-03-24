@@ -14,21 +14,18 @@ document.onclick = (e) => {
     const selfHost = getHost(),
       href = e.target.href,
       target = e.target.target;
-
+    // only route if the href matches the current domain
     if (!href.startsWith(selfHost)) return;
     e.preventDefault();
-    const routePaths = router.routes
-        .map((route) => route.path)
-        .filter((path) => path !== "/"),
+    const routePaths = router.routes.map((route) => route.path),
       path = href.split(selfHost)[1],
       goToPage = (path) => (location.hash = path);
-
-    if (path === "/") return goToPage("/");
+    // matches the route
     if (routePaths.includes(path)) {
       if (target === "_blank") return open(`${selfHost}/#${path}`, "_blank");
       return goToPage(path);
     }
-
+    // not match any route
     if (FULLY_SPA) return goToPage("/404");
     if (target === "_blank") return open(href, "_blank");
     location.href = href;
