@@ -1,4 +1,4 @@
-class LoremComponent extends HTMLElement {
+class Lorem extends HTMLElement {
   constructor() {
     super();
     this.shadow = this.attachShadow({ mode: "closed" });
@@ -12,5 +12,5 @@ class LoremComponent extends HTMLElement {
   }
 }
 
-customElements.define("lorem-component", LoremComponent);
-export default LoremComponent;
+customElements.define("lorem-component", Lorem);
+export default Lorem;
