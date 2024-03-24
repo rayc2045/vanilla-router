@@ -4,11 +4,11 @@ class About extends HTMLElement {
     this.shadow = this.attachShadow({ mode: "closed" });
   }
   connectedCallback() {
+    import("../components/LoremComponent.js");
     this.shadow.innerHTML = `
       <h1>This is about page</h1>
       <lorem-component></lorem-component>
     `;
-    import("../components/LoremComponent.js");
   }
 }
 

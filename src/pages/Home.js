@@ -4,6 +4,7 @@ class Home extends HTMLElement {
     this.shadow = this.attachShadow({ mode: "closed" });
   }
   connectedCallback() {
+    import("../components/LoremComponent.js");
     this.shadow.innerHTML = `
       <h1>This is home page</h1>
       <lorem-component></lorem-component>
@@ -16,7 +17,6 @@ class Home extends HTMLElement {
     //     p { font-weight:bold; }
     //   </style>
     // `;
-    import("../components/LoremComponent.js");
   }
 }
 
