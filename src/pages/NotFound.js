@@ -11,5 +11,5 @@ class NotFound extends HTMLElement {
   }
 }
 
-customElements.define("not-found-page", NotFound);
+customElements.define("not-found", NotFound);
 export default NotFound;
