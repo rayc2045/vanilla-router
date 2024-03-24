@@ -21,41 +21,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.blue.min.css"
     />
-    <style>
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background-color: var(--pico-muted-color);
-        border-radius: 5px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background-color: transparent;
-      }
-
-      @media (prefers-color-scheme: light) {
-        ::-webkit-scrollbar-thumb {
-          background-color: darkgray;
-        }
-      }
-
-      body {
-        font-family: "Noto Sans TC", Arial, sans-serif;
-        overflow-x: hidden;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: inherit;
-      }
-    </style>
+    <link rel="stylesheet" href="./src/assets/style.css" />
     <!-- MasterCSS -->
     <script src="https://cdn.master.co/css" defer></script>
     <script src="./src/main.js" type="module"></script>
@@ -64,27 +30,20 @@
   <body class="min-h:100svh display:flex flex-direction:column">
     <nav class="container-fluid">
       <ul>
-        <li><a href="/#/" class="font:bold font:1.5em">Vanilla SPA</a></li>
+        <li>
+          <a href="/" class="font:bold font:1.5em text-decoration:none">
+            Vanilla SPA
+          </a>
+        </li>
       </ul>
       <ul>
-        <li><a href="/#/about">About</a></li>
-        <li><a href="/#/servuce">Services</a></li>
-        <li><a href="/#/products">Products</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/service">Services</a></li>
+        <li><a href="/products">Products</a></li>
       </ul>
     </nav>
 
-    <div class="flex-grow:1 py:2em container">
-      <div id="router-view"></div>
-      <p>
-        The paragraph below is made by
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components"
-          target="_blank"
-          >Web Components</a
-        >
-      </p>
-      <lorem-component></lorem-component>
-    </div>
+    <div id="router-view" class="flex-grow:1 py:2em container"></div>
 
     <footer class="text:center font:monospace">
       Developed by
