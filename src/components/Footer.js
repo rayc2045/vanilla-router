@@ -1,10 +1,8 @@
 class Footer extends HTMLElement {
   constructor() {
     super();
-    this.shadow = this.attachShadow({ mode: "closed" });
-  }
-  connectedCallback() {
-    this.shadow.innerHTML = `
+    const shadowRoot = this.attachShadow({ mode: "closed" });
+    shadowRoot.innerHTML = `
       <style>
         :host {
           text-align: center;
