@@ -9,6 +9,29 @@ export function getHost() {
     : `${location.protocol}//${location.host}`;
 }
 
+export class URLSearchQuery {
+  constructor(url = location.href) {
+    if (!url.includes("?")) return null;
+    url
+      .split("?")[1]
+      .split("&")
+      .filter((p) => p.length)
+      .forEach((param) => {
+        const [prop, value] = param.split("=");
+        if (!prop) return null;
+        if (this.hasOwnProperty(prop)) return;
+        if (!value) return (this[prop] = true);
+        if (value.toLowerCase() === "true" || value.toLowerCase() === "false")
+          return (this[prop] = value.toLowerCase() === "true");
+        const values = value
+          .split("+")
+          .filter((v) => v.length)
+          .map((v) => (isNaN(+v) ? v : +v));
+        this[prop] = values.length > 1 ? values : values[0];
+      });
+  }
+}
+
 export function select(selector, parent = document) {
   return parent.querySelector(selector);
 }

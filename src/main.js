@@ -2,7 +2,7 @@ import router from "./router/index.js";
 import("./components/Footer.js");
 
 window.onhashchange = () => {
-  const hash = location.hash.slice(1);
+  const hash = location.hash.slice(1).split("?")[0];
   if (hash.startsWith("/")) router.renderPage(hash);
 };
 
