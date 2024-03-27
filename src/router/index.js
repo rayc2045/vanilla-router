@@ -4,7 +4,14 @@ class Router {
   constructor() {
     this.routes = routes;
   }
-  renderPage(path) {
+
+  getPath() {
+    const path = location.hash.slice(1).split("?")[0];
+    return path.startsWith("/") ? path : "/";
+  }
+
+  renderPage() {
+    const path = this.getPath();
     const route = this.routes.find((route) => route.path === path) || {
       path: "/404",
       component: "NotFound",
@@ -16,6 +23,6 @@ class Router {
 }
 
 const router = new Router();
-router.renderPage(location.hash.slice(1) || "/");
+router.renderPage();
 
 export default router;
