@@ -5,13 +5,12 @@ class Router {
     this.routes = routes;
   }
 
-  getPath() {
+  get currentPath() {
     const path = location.hash.slice(1).split("?")[0];
     return path.startsWith("/") ? path : "/";
   }
 
-  renderPage() {
-    const path = this.getPath();
+  renderPage(path = this.currentPath) {
     const route = this.routes.find((route) => route.path === path) || {
       path: "/404",
       component: "NotFound",
