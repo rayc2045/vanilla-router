@@ -13,9 +13,11 @@ class Router {
   renderPage(path = this.currentPath) {
     const route = this.routes.find((route) => route.path === path) || {
       path: "/404",
+      title: "Not Found",
       component: "NotFound",
       element: "<not-found></not-found>",
     };
+    document.title = route.title;
     import(`/src/pages/${route.component}.js`);
     document.querySelector("#router-view").innerHTML = route.element;
   }
